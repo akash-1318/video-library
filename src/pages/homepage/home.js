@@ -3,13 +3,13 @@ import {Link} from "react-router-dom"
 
 function Home(){
     return(
-        <main class="main">
-            <div class="main__text-div">
-                <h1 class="heading-primary">
-                    <span class="heading-primary--main">DevTube</span>
-                    <span class="heading-primary--sub">is where learners belong</span>
+        <main className="main">
+            <div className="main__text-div">
+                <h1 className="heading-primary">
+                    <span className="heading-primary--main">DevTube</span>
+                    <span className="heading-primary--sub">is where learners belong</span>
                 </h1>
-                <Link to="/" class="btn btn--white btn--animated">Explore learning</Link>
+                <Link to="/" className="btn btn--white btn--animated">Explore learning</Link>
             </div>
         </main>
     )
