@@ -1,0 +1,68 @@
+:root {
+    --font-color: #464646;
+    --back-color: #405fca;
+    --primary-color: #8292fd;
+    --secondry-color:#eaeaec;
+    --secondry-text-color:#696b79;
+    --dark-secondry-color:#d8d8da;
+    --dark-secondry-text-color:#3f4049;
+    --alert-primary-bgcolor: #cfe2ff;
+    --alert-secondry-textcolor:#41464b;
+    --alert-secondry-bgcolor:#e2e3e5;
+    --success-textcolor:#0f5132;
+    --success-bgcolor:#d1e7dd;
+    --danger-textcolor:#842029;
+    --danger-bgcolor:#f8d7da;
+    --warning-textcolor:#664d03;
+    --warning-bgcolor:#fff3cd;
+    --info-textcolor:#055160;
+    --info-bgcolor:#cff4fc;
+    --primary-textcolor:#084298;
+    --go-to-cart: #a0a0a0;
+    --primary-backgroud-color:#f5f5f5;
+    --slider-bg-color : #d3d3d3;
+    --slider-thumb-bg-color:#636363;
+    --white-color : #ffffff;
+    --tomato-color : #ff6347
+
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    
+}
+
+html{
+    font-size:62.5%;
+    font-family: 'Roboto', sans-serif;
+    color: var(--font-color);
+}
+
+h1{
+    font-size: 3.2rem;
+}
+h2{
+    font-size: 2.4rem;
+}
+h3{
+    font-size: 1.872rem;
+}
+h4{
+    font-size: 1.6rem;
+}
+h5{
+    font-size: 1.328rem;
+}
+h6{
+    font-size: 1.72rem;
+}
+
+.space__2rem{
+    height: 2rem;
+}
+
+a{
+    text-decoration: none;
+}

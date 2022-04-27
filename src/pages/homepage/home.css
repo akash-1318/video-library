@@ -1,0 +1,128 @@
+.main{
+    height: 100vh;
+    background-image: linear-gradient(to right bottom, #12121269, #00000095) , url(/src/assets/images/home1.jpg);
+    background-size: cover;
+    background-position: left;
+    position: relative;
+}
+
+.main__text-div{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.heading-primary{
+    color: var(--white-color);
+    backface-visibility: hidden;
+    margin-bottom: 4rem;
+}
+
+.heading-primary--main{
+    display: block;
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+}
+
+.heading-primary--sub{
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1.5rem;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+@keyframes moveInLeft{ 
+    0%{
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+    80%{
+        transform: translateX(1rem);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight{ 
+    0%{
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+    80%{
+        transform: translateX(-1rem);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes btnAnim{ 
+    0%{
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    animation-name: btnAnim;
+    animation-duration: 1s;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn--white{
+    background-color: var(--white-color);
+    color: var(--font-color);
+}
+
+.btn::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--white-color);
+    z-index: -1;
+    transition: .3s;
+}
+
+.btn:hover::after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn--animated{
+    animation: btnAnim .5s ease-out .75s;
+    animation-fill-mode: backwards;
+}
