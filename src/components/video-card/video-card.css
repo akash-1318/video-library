@@ -1,0 +1,135 @@
+.video__card-conatiner{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    cursor: pointer;
+    position: unset;
+    border-radius: 0px;
+    box-shadow: none;
+    align-self: flex-start;
+    background-color: var(--white-color);
+    position: relative;
+}
+
+.card:hover{
+    transform: scale(1.2);
+    transition: .2s ease-in 1.5s;
+    box-shadow: 5px 5px 10px #00000038;
+    position: relative;
+    z-index: 5;
+}
+
+.card__img{
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.card__img-c{
+    height: 18rem;
+}
+
+.video__details{
+    flex-grow: 1;
+}
+
+.card__desc-text{
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    line-height: 16px;
+    max-height: 32px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.card__desc{
+    padding: 0rem .5rem 1rem .5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.channel__img{
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+}
+
+.additional__details{
+    line-height: 2rem;
+    font-size: 1.2rem;
+}
+
+.video__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.card__img:hover > .video__overlay{
+    background-color: var(--primary-color);
+    opacity: .8;
+    transition: .1s ease-in .5s;
+}
+
+.overlay__text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    color: var(--white-color);
+    font-size: 0rem;
+}
+
+.card__img:hover > .overlay__text > i {
+    font-size: 5rem;
+    transition: .2s ease-in .5s;
+}
+
+.menu__icon > i{
+    font-size: 3rem;
+    right: 0px;
+    cursor: pointer;
+}
+
+.menu__icon > i:hover {
+    color: var(--secondry-color);
+}
+
+.menu__bar-conatiner{
+    background-color: var(--white-color);
+    position: absolute;
+    right: 1rem;
+    bottom: 9rem;
+    z-index: 1;
+    padding: 1rem;
+}
+
+.menu__name{
+    font-size: 1.5rem;
+    color: var(--secondry-color);
+    margin: .5rem 0rem;
+    padding: .5rem;
+}
+
+.menu__name:hover{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}

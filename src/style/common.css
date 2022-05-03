@@ -2,7 +2,7 @@
     --font-color: #464646;
     --back-color: #405fca;
     --primary-color: #8292fd;
-    --secondry-color:#eaeaec;
+    --secondry-color:#ff4daf;
     --secondry-text-color:#696b79;
     --dark-secondry-color:#d8d8da;
     --dark-secondry-text-color:#3f4049;
@@ -23,8 +23,7 @@
     --slider-bg-color : #d3d3d3;
     --slider-thumb-bg-color:#636363;
     --white-color : #ffffff;
-    --tomato-color : #ff6347
-
+    --tomato-color : #ff6347;
 }
 
 *{
@@ -32,6 +31,11 @@
     padding: 0px;
     box-sizing: border-box;
     
+}
+
+::selection {
+    color: none;
+    background: none;
 }
 
 html{
