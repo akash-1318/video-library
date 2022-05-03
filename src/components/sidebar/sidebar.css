@@ -1,0 +1,49 @@
+.sidebar__menus{
+    width: 8.5rem;
+    padding: 2rem 0rem;
+    height: 88.5vh;
+    overflow: hidden;
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
+    position: fixed;
+    z-index: 2;
+}
+
+.sidebar__menus.appear{
+    width: 30rem;
+    transition: .1s ease-in-out;
+}
+
+.sidebar__menu{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebar__menu:hover{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.sidebar__menu:hover > i{
+    font-size: 5.5rem;
+    transition: .1s ease-in-out;
+    color: var(--secondry-color);
+}
+
+.sidebar__menu > i{
+    font-size: 4.5rem;
+    padding: 1.5rem;
+}
+
+.icon__name{
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.sidebar__menu.bottom__menu{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
