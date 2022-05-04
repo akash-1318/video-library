@@ -6,7 +6,6 @@ import { filterVideos } from "../../utils/filter-videos";
 function VideosSection() {
   const { state, dispatch } = useVideoContext();
   const { videosData, categoriesData, singleCategory } = state;
-  console.log(singleCategory);
   const filteredVideos = filterVideos(videosData, singleCategory);
 
   const filterActive = (category) => {

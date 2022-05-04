@@ -19,7 +19,6 @@ const VideoContextProvider = ({children}) =>{
             try{
                 const {data : {videos}} = await axios.get("/api/videos")
                 dispatch({type : "GET_VIDEOS", payload : videos})
-                console.log(videos)
             } catch(err){
                 console.log(err)
             }
@@ -31,7 +30,6 @@ const VideoContextProvider = ({children}) =>{
         const getCategory = async() => {
             try{
                 const {data : {categories}} = await axios.get("/api/categories")
-                console.log(categories)
                 dispatch({type : "GET_CATEGORY", payload : categories})
             } catch(err){
                 console.log(err)
