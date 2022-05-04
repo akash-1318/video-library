@@ -6,6 +6,8 @@ const VideoContext = createContext();
 
 const initialStates = {
     videosData : [],
+    categoriesData : [],
+    singleCategory : "All",
 }
 
 const VideoContextProvider = ({children}) =>{
@@ -17,12 +19,23 @@ const VideoContextProvider = ({children}) =>{
             try{
                 const {data : {videos}} = await axios.get("/api/videos")
                 dispatch({type : "GET_VIDEOS", payload : videos})
-                console.log(videos)
             } catch(err){
                 console.log(err)
             }
         }
         videoData()
+    },[])
+
+    useEffect(() => {
+        const getCategory = async() => {
+            try{
+                const {data : {categories}} = await axios.get("/api/categories")
+                dispatch({type : "GET_CATEGORY", payload : categories})
+            } catch(err){
+                console.log(err)
+            }
+        }
+        getCategory()
     },[])
 
     return(

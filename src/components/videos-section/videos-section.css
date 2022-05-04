@@ -33,3 +33,8 @@
     justify-content: center;
     gap: 2rem;
 }
+
+.category__item.active{
+    background-color: var(--secondry-color);
+    color: white;
+}
