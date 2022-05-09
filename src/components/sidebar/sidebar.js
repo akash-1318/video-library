@@ -1,17 +1,36 @@
 import "./sidebar.css";
+import {Link, useNavigate, NavLink} from "react-router-dom"
 import { usePrimaryStatesContext } from "../../contexts/primary-states-context";
+import {useAuthContext} from "../../contexts/auth-context"
 
 function Sidebar() {
+    const navigate = useNavigate();
   const { sidebar, setSidebar } = usePrimaryStatesContext();
+  const {authCred} = useAuthContext();
+  const {authToken, authStatus} = authCred;
+
+  const logout = () => {
+    localStorage.clear();
+    setAuthCred({ ...authCred, authToken: null, authStatus: false });
+    navigate("/videolisting")
+  };
+
+  const getActiveStyle = ({ isActive }) => ({
+    color: isActive ? "var(--secondry-color)" : "",
+    backgroundColor : isActive ? "var(--primary-color)" : null
+  });
+
   return (
-    <aside className={`sidebar__menus ${sidebar ? "appear" : ""}`}>
+    <aside className={`sidebar__menus ${sidebar ? "appear" : ""}`} onClick={() => setSidebar(false)}>
       <ul className="sidebar__menu-container">
+      <NavLink style={getActiveStyle} to="/videolisting" className="link__style">
         <li className="sidebar__menu">
           <i class="bx bxs-home-heart"></i>
           <span className="icon__name">
             <p>Home</p>
           </span>
         </li>
+        </NavLink>
         <li className="sidebar__menu">
           <i class="bx bxs-heart"></i>
           <span className="icon__name">
@@ -36,12 +55,23 @@ function Sidebar() {
             <p>History</p>
           </span>
         </li>
+        {authStatus ? (
+            <li className="sidebar__menu bottom__menu" onClick={logout}>
+              <i class='bx bx-log-out-circle'></i>
+              <span className="icon__name">
+                <p>Logout</p>
+              </span>
+            </li>
+        ) : (
+        <NavLink style={getActiveStyle} to="/login" className="link__style">
         <li className="sidebar__menu bottom__menu">
           <i class="bx bx-log-in-circle"></i>
           <span className="icon__name">
             <p>Login</p>
           </span>
         </li>
+        </NavLink>
+        )}
       </ul>
     </aside>
   );

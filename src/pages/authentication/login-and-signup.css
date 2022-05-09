@@ -1,0 +1,118 @@
+.form__container{
+    width: 100%;
+}
+
+.credentials{
+    padding: 3rem 5rem;
+    width: 40rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 5px 5px 15px var(--dark-secondry-color);
+    font-size: 1.3rem;
+}
+
+.credentials > h1{
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.cred__input-field{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.cred__input-field > label{
+    display: block;
+    margin-bottom: 2px;
+}
+
+.cred__input-field > input{
+    width: 100%;
+    padding: .8rem 1rem;
+    outline: none;
+    border: 1px solid var(--dark-secondry-color);
+    border-radius: 3px;
+}
+
+.cred__input-field > input::placeholder{
+    color: var(--dark-secondry-color);
+}
+
+.remember__checkbox{
+    display: flex;
+    align-items: center;
+}
+
+.remember__checkbox > input{
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+}
+
+.cred__remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot__password{
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.cred__btn{
+    background-color: var(--primary-color);
+}
+
+.cred__button{
+    width: 100%;
+    padding: 1rem 2rem;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.create__new-account{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.create__new-account > i{
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.signup__form{
+    position: unset;
+    transform: none;
+    margin: 5rem auto;
+}
+
+.password__field{
+    position: relative;
+}
+
+.password__field > input{
+    padding-right: 4rem;
+}
+
+.password__field > i{
+    position: absolute;
+    font-size: 2rem;
+    right: 1rem;
+    top: 2.4rem;
+    cursor: pointer;
+}
+
+.password__field > .wrong__input{
+    border: 1px solid var(--tomato-color);
+}

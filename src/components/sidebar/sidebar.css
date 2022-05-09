@@ -27,7 +27,6 @@
 }
 
 .sidebar__menu:hover > i{
-    font-size: 5.5rem;
     transition: .1s ease-in-out;
     color: var(--secondry-color);
 }
@@ -46,4 +45,8 @@
     position: absolute;
     bottom: 0px;
     width: 100%;
+}
+
+.link__style{
+    color: var(--primary-color);
 }
