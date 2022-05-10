@@ -1,8 +1,21 @@
 import "./video-card.css";
-import {viewsConvertor} from "../../utils/views-convertor"
+import { viewsConvertor } from "../../utils/views-convertor";
 import { useState } from "react";
-function VideoCard({videoData}) {
-    const [showMenu, setShowMenu] = useState(false)
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../contexts/auth-context";
+import { useVideoContext } from "../../contexts/video-context";
+import { addToLikedVideos } from "../../utils/handleLikedVideos";
+import { removeFromLikedVideos } from "../../utils/handleLikedVideos";
+import { saveToWatchLater } from "../../utils/handle-watch-later";
+import { removeFromWatchLater } from "../../utils/handle-watch-later";
+
+function VideoCard({ videoData }) {
+  const navigate = useNavigate();
+  const [showMenu, setShowMenu] = useState(false);
+  const { authCred } = useAuthContext();
+  const { state, dispatch } = useVideoContext();
+  const { authToken, authStatus } = authCred;
+  const { likedVideos, watchLater } = state;
   return (
     <div className="video__card-conatiner">
       <div class="card">
@@ -15,27 +28,84 @@ function VideoCard({videoData}) {
             />
             <div className="video__overlay"></div>
             <div className="overlay__text">
-            <i class='bx bx-play-circle' ></i>
+              <i class="bx bx-play-circle"></i>
             </div>
           </div>
           <div class="card__desc">
-            <img src={videoData.profile} className="channel__img"/>
+            <img src={videoData.profile} className="channel__img" />
             <div className="video__details">
-            <p class="card__desc-text">
-              {videoData.title}
-            </p>
-            <p className="additional__details">{videoData.creator}</p>
-            <p className="additional__details">{viewsConvertor(videoData.views)} • {videoData.uploaded}</p>
+              <p class="card__desc-text">{videoData.title}</p>
+              <p className="additional__details">{videoData.creator}</p>
+              <p className="additional__details">
+                {viewsConvertor(videoData.views)} • {videoData.uploaded}
+              </p>
             </div>
-            <span className="menu__icon" onClick = {(e) => setShowMenu(!showMenu)}>
-                <i class='bx bx-dots-vertical-rounded' ></i>
+            <span
+              className="menu__icon"
+              onClick={(e) => setShowMenu(!showMenu)}
+            >
+              <i class="bx bx-dots-vertical-rounded"></i>
             </span>
             {showMenu === true ? (
-            <div className={`menu__bar-conatiner`}>
-                <p className="menu__name"> <i class='bx bxs-watch' ></i> Save to watch later</p>
-                <p className="menu__name"> <i class='bx bxs-playlist' ></i> Save to play list</p>
-                <p className="menu__name"> <i class='bx bxs-heart' ></i> Add to liked videos</p>
-            </div>
+              <div
+                className={`menu__bar-conatiner`}
+                onClick={() => setShowMenu(false)}
+              >
+                {watchLater.find((video) => video._id === videoData._id) ? (
+                  <p
+                    className="menu__name"
+                    onClick={() => {
+                      removeFromWatchLater(videoData, dispatch, authToken);
+                    }}
+                  >
+                    {" "}
+                    <i class="bx bxs-watch"></i> Remove watch later
+                  </p>
+                ) : (
+                  <p
+                    className="menu__name"
+                    onClick={() => {
+                      if (authStatus) {
+                        saveToWatchLater(videoData, dispatch, authToken);
+                      } else {
+                        navigate("/login");
+                      }
+                    }}
+                  >
+                    {" "}
+                    <i class="bx bxs-watch"></i> Save to watch later
+                  </p>
+                )}
+                <p className="menu__name">
+                  {" "}
+                  <i class="bx bxs-playlist"></i> Save to play list
+                </p>
+                {likedVideos.find((video) => video._id === videoData._id) ? (
+                  <p
+                    className="menu__name"
+                    onClick={() => {
+                      removeFromLikedVideos(videoData, dispatch, authToken);
+                    }}
+                  >
+                    {" "}
+                    <i class="bx bxs-heart"></i> Remove from liked{" "}
+                  </p>
+                ) : (
+                  <p
+                    className="menu__name"
+                    onClick={() => {
+                      if (authStatus) {
+                        addToLikedVideos(videoData, dispatch, authToken);
+                      } else {
+                        navigate("/login");
+                      }
+                    }}
+                  >
+                    {" "}
+                    <i class="bx bxs-heart"></i> Add to liked videos{" "}
+                  </p>
+                )}
+              </div>
             ) : null}
           </div>
         </div>
