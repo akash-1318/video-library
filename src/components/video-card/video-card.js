@@ -16,6 +16,12 @@ function VideoCard({ videoData }) {
   const { state, dispatch } = useVideoContext();
   const { authToken, authStatus } = authCred;
   const { likedVideos, watchLater, history } = state;
+
+  const openVideoPage = (e) => {
+    e.preventDefault();
+    navigate(`/video/${videoData._id}`)
+  }
+
   return (
     <div className="video__card-conatiner">
       <div class="card">
@@ -27,15 +33,15 @@ function VideoCard({ videoData }) {
                   } else{
                       navigate("/login")
                   }
-            }
-      }}>
+                }
+            }}>
             <img
               src={`http://i1.ytimg.com/vi/${videoData._id}/0.jpg`}
               alt="card-img"
               class="card__img-c"
             />
             <div className="video__overlay"></div>
-            <div className="overlay__text">
+            <div className="overlay__text" onClick={openVideoPage}>
               <i class="bx bx-play-circle"></i>
             </div>
           </div>

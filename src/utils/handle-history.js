@@ -12,7 +12,6 @@ const addToHistory = async(video, dispatch, authToken) => {
                 },
             }
             )
-            console.log(res)
             dispatch({type : "HANDLE_HISTORY", payload : res.data.history})
     } catch(err){
         console.log(err)
@@ -31,6 +30,7 @@ const deleteFromHistory = async(video, dispatch, authToken) => {
             }
             )
             dispatch({type : "HANDLE_HISTORY", payload : res.data.history})
+            toast.success("Removed video from history");
     } catch(err){
         console.log(err)
     }
@@ -47,6 +47,7 @@ const clearAllHistory = async(dispatch, authToken) => {
             }
             )
             dispatch({type : "HANDLE_HISTORY", payload : res.data.history})
+            toast.success("Removed all videos from history");
     } catch(err){
         console.log(err)
     }
