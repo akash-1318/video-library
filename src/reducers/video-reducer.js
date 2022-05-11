@@ -9,7 +9,9 @@ const videoReducer = (state, action) => {
         case "HANDLE_LIKED_VIDEOS":
             return {...state, likedVideos : action.payload}
         case "HANDLE_WATCH_LATER":
-            return {...state, watchLater : action.payload}    
+            return {...state, watchLater : action.payload} 
+        case "HANDLE_HISTORY":
+            return {...state, history : action.payload}    
     }
 }
 

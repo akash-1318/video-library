@@ -15,10 +15,11 @@ function WatchLater() {
       <div className="main__container">
         <Sidebar />
         <section className="main__video-container">
+        <h1 className="page__text">Watch later</h1>
           <div className="videos__container">
           {watchLater.length === 0 ? (<>
               <div className="empty__video-container">
-              <h1>No added videos</h1>
+              <h2>You haven't added any video for later !</h2>
               <img src={empty} className="empty__img"/>
               </div>
               </>) : (<>

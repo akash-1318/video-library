@@ -1,0 +1,10 @@
+.clear__history{
+    border: none;
+    background-color: transparent;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--secondry-color);
+    position: absolute;
+    top: 4rem;
+}

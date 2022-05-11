@@ -8,6 +8,7 @@ import {Signup} from "./pages/index"
 import {Login} from "./pages/index"
 import { LikedVideos } from "./pages/index";
 import { WatchLater } from "./pages/index";
+import {History} from "./pages/index"
 import MockMan from "mockman-js";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/likedvideos" element={<LikedVideos/>}/>
         <Route path="/watchlater" element={<WatchLater/>}/>
+        <Route path="/history" element={<History/>}/>
         <Route path="/mock" element={<MockMan />}></Route>
       </Routes>
     </div>

@@ -53,12 +53,14 @@ function Sidebar() {
           </span>
         </li>
         </NavLink>
+        <NavLink style={getActiveStyle} to="/history" className="link__style">
         <li className="sidebar__menu">
           <i class="bx bx-history"></i>
           <span className="icon__name">
             <p>History</p>
           </span>
         </li>
+        </NavLink>
         {authStatus ? (
             <li className="sidebar__menu bottom__menu" onClick={logout}>
               <i class='bx bx-log-out-circle'></i>

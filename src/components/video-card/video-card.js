@@ -1,26 +1,34 @@
 import "./video-card.css";
 import { viewsConvertor } from "../../utils/views-convertor";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../contexts/auth-context";
 import { useVideoContext } from "../../contexts/video-context";
-import { addToLikedVideos } from "../../utils/handleLikedVideos";
-import { removeFromLikedVideos } from "../../utils/handleLikedVideos";
-import { saveToWatchLater } from "../../utils/handle-watch-later";
-import { removeFromWatchLater } from "../../utils/handle-watch-later";
+import { addToLikedVideos, removeFromLikedVideos } from "../../utils/handleLikedVideos";
+import { saveToWatchLater, removeFromWatchLater } from "../../utils/handle-watch-later";
+import {addToHistory, deleteFromHistory, clearAllHistory} from "../../utils/handle-history"
 
 function VideoCard({ videoData }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showMenu, setShowMenu] = useState(false);
   const { authCred } = useAuthContext();
   const { state, dispatch } = useVideoContext();
   const { authToken, authStatus } = authCred;
-  const { likedVideos, watchLater } = state;
+  const { likedVideos, watchLater, history } = state;
   return (
     <div className="video__card-conatiner">
       <div class="card">
         <div class="card__container">
-          <div class="card__img">
+          <div class="card__img" onClick = {() => {
+            if(location.pathname !== "/history"){
+                if(authStatus){
+                    addToHistory(videoData, dispatch, authToken)
+                  } else{
+                      navigate("/login")
+                  }
+            }
+      }}>
             <img
               src={`http://i1.ytimg.com/vi/${videoData._id}/0.jpg`}
               alt="card-img"
@@ -103,6 +111,17 @@ function VideoCard({ videoData }) {
                   >
                     {" "}
                     <i class="bx bxs-heart"></i> Add to liked videos{" "}
+                  </p>
+                )}
+                {location.pathname === "/history" && (
+                    <p
+                    className="menu__name"
+                    onClick={() => {
+                       deleteFromHistory(videoData, dispatch, authToken);
+                    }}
+                  >
+                    {" "}
+                    <i class="bx bxs-heart"></i> Remove from History{" "}
                   </p>
                 )}
               </div>
