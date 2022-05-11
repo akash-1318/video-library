@@ -5,7 +5,11 @@ const videoReducer = (state, action) => {
         case "GET_CATEGORY":
             return {...state, categoriesData : action.payload}  
         case "SET_CATEGORY":
-            return {...state, singleCategory : action.payload}    
+            return {...state, singleCategory : action.payload}
+        case "HANDLE_LIKED_VIDEOS":
+            return {...state, likedVideos : action.payload}
+        case "HANDLE_WATCH_LATER":
+            return {...state, watchLater : action.payload}    
     }
 }
 

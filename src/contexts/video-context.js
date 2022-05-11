@@ -7,6 +7,8 @@ const VideoContext = createContext();
 const initialStates = {
     videosData : [],
     categoriesData : [],
+    likedVideos : [],
+    watchLater : [],
     singleCategory : "All",
 }
 
