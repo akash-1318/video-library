@@ -2,18 +2,21 @@ import "./login-and-signup.css";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Navigation, Sidebar } from "../../components/compIndex";
 import { useAuthContext } from "../../contexts/auth-context";
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { authCred, setAuthCred } = useAuthContext();
   const [passwordType, setPasswordType] = useState(true);
   const [loginCred, setLoginCred] = useState({
     email: "",
     password: "",
   });
+
+  const from  = location.state?.from?.pathname || "/"
 
   const loginHandler = async ({ email, password }) => {
     try {
@@ -25,7 +28,7 @@ function Login() {
       });
       localStorage.setItem("TOKEN", encodedToken);
       setAuthCred({ ...authCred, authToken: encodedToken, authStatus: true });
-      navigate("/videolisting");
+      navigate(from, {replace : true})
       toast.success("You have logged in");
     } catch (err) {
       console.log(err);
@@ -89,12 +92,13 @@ function Login() {
               </button>
               <button
                 className="btn solid__primary cred__button"
-                onClick={(e) =>
+                onClick={(e) => {
                   loginHandler({
                     email: "adarshbalika@gmail.com",
                     password: "adarshBalika123",
                   })
-                }
+                  navigate(from, {replace : true})
+                }}
               >
                 Login as guest
               </button>
