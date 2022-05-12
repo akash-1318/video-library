@@ -10,6 +10,7 @@ const initialStates = {
     likedVideos : [],
     watchLater : [],
     history : [],
+    playlists : [],
     singleCategory : "All",
 }
 

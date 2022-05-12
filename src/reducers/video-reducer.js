@@ -11,7 +11,9 @@ const videoReducer = (state, action) => {
         case "HANDLE_WATCH_LATER":
             return {...state, watchLater : action.payload} 
         case "HANDLE_HISTORY":
-            return {...state, history : action.payload}    
+            return {...state, history : action.payload}
+        case "ADD_PLAYLIST":
+            return {...state, playlists : [...action.payload]}    
     }
 }
 

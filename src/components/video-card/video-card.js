@@ -96,7 +96,13 @@ function VideoCard({ videoData }) {
                     <i class="bx bxs-watch"></i> Save to watch later
                   </p>
                 )}
-                <p className="menu__name" onClick={ () => setModal(!modal)}>
+                <p className="menu__name" onClick={ () => {
+                    if(authStatus) {
+                        setModal(!modal)
+                    } else{
+                        navigate("/login");
+                    }
+                }}>
                   {" "}
                   <i class="bx bxs-playlist"></i> Save to play list
                 </p>
