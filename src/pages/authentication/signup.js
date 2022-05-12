@@ -2,12 +2,13 @@ import "./login-and-signup.css";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Navigation, Sidebar } from "../../components/compIndex";
 import { useAuthContext } from "../../contexts/auth-context";
 
 function Signup() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { authCred, setAuthCred } = useAuthContext();
   const [passwordType, setPasswordType] = useState(true);
   const [confPasswordType, setConfPasswordType] = useState(true);
@@ -18,6 +19,8 @@ function Signup() {
     password: "",
     confirmPassword: "",
   });
+
+  const from  = location.state?.from?.pathname || "/"
 
   const signupCredHandler = async ({
     firstname,
@@ -44,7 +47,7 @@ function Signup() {
         localStorage.setItem("TOKEN", encodedToken);
         setAuthCred({ ...authCred, authToken: encodedToken, authStatus: true });
         toast.success("Successfully Signed In");
-        navigate("/videolisting")
+        navigate(from, {replace : true})
       } catch (err) {
         toast.error("Error in signup");
         console.log(err);
