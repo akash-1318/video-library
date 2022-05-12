@@ -1,14 +1,10 @@
 .video__card-conatiner{
-    display: flex;
     flex-wrap: wrap;
     gap: 3rem;
-    align-items: center;
-    justify-content: center;
 }
 
 .card{
-    cursor: pointer;
-    position: unset;
+    cursor: initial;
     border-radius: 0px;
     box-shadow: none;
     align-self: flex-start;
@@ -16,17 +12,10 @@
     position: relative;
 }
 
-.card:hover{
-    transform: scale(1.2);
-    transition: .2s ease-in 1.5s;
-    box-shadow: 5px 5px 10px #00000038;
-    position: relative;
-    z-index: 5;
-}
-
 .card__img{
     position: relative;
     margin-bottom: 1rem;
+    cursor: pointer;
 }
 
 .card__img-c{
@@ -81,7 +70,7 @@
 .card__img:hover > .video__overlay{
     background-color: var(--primary-color);
     opacity: .8;
-    transition: .1s ease-in .5s;
+    transition: .1s ease-in .1s;
 }
 
 .overlay__text{
@@ -100,7 +89,7 @@
 
 .card__img:hover > .overlay__text > i {
     font-size: 5rem;
-    transition: .2s ease-in .5s;
+    transition: .2s ease-in .1s;
 }
 
 .menu__icon > i{
@@ -127,6 +116,7 @@
     color: var(--secondry-color);
     margin: .5rem 0rem;
     padding: .5rem;
+    cursor: pointer;
 }
 
 .menu__name:hover{

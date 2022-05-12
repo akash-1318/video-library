@@ -1,8 +1,6 @@
 import "./liked-videos.css";
-import { Navigation } from "../../components/navigation/navigation";
-import { Sidebar } from "../../components/sidebar/sidebar";
+import {Navigation,Sidebar, VideoCard} from "../../components/compIndex"
 import {useVideoContext} from "../../contexts/video-context";
-import {VideoCard} from "../../components/compIndex"
 import empty from "../../assets/images/Empty-bag.svg"
 
 function LikedVideos() {
@@ -14,10 +12,11 @@ function LikedVideos() {
       <div className="main__container">
         <Sidebar />
         <section className="main__video-container">
+        <h1 className="page__text">Liked Videos</h1>
           <div className="videos__container">
               {likedVideos.length === 0 ? (<>
               <div className="empty__video-container">
-              <h1>No liked videos</h1>
+              <h2>You haven't liked any video yet !</h2>
               <img src={empty} className="empty__img"/>
               </div>
               </>) : (<>
