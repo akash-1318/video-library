@@ -4,8 +4,9 @@ const PrimaryStates = createContext();
 
 const PrimaryStatesProvider = ({children}) => {
     const [sidebar, setSidebar] = useState(false)
+    const [modal, setModal] = useState(false)
     return(
-        <PrimaryStates.Provider value = {{sidebar, setSidebar}}>
+        <PrimaryStates.Provider value = {{sidebar, setSidebar, modal, setModal}}>
             {children}
         </PrimaryStates.Provider>
     )

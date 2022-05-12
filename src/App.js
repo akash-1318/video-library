@@ -11,6 +11,7 @@ import {
   WatchLater,
   History,
   SingleVideo,
+  Playlist,
 } from "./pages/index";
 import { RequireAuth } from "./utils/utils-index";
 import MockMan from "mockman-js";
@@ -47,6 +48,14 @@ function App() {
           element={
             <RequireAuth>
               <History />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/playlist"
+          element={
+            <RequireAuth>
+              <Playlist />
             </RequireAuth>
           }
         />

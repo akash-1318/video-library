@@ -39,12 +39,14 @@ function Sidebar() {
           </span>
         </li>
         </NavLink>
+        <NavLink style={getActiveStyle} to="/playlist" className="link__style">
         <li className="sidebar__menu">
           <i class="bx bxs-playlist"></i>
           <span className="icon__name">
             <p>Playlist</p>
           </span>
         </li>
+        </NavLink>
         <NavLink style={getActiveStyle} to="/watchlater" className="link__style">
         <li className="sidebar__menu">
           <i class="bx bxs-watch"></i>
