@@ -11,7 +11,6 @@ import {
   removeFromWatchLater,
   addToHistory,
   deleteFromHistory,
-  clearAllHistory,
 } from "../../utils/utils-index";
 
 function VideoCard({ videoData }) {
@@ -36,11 +35,7 @@ function VideoCard({ videoData }) {
             class="card__img"
             onClick={() => {
               if (location.pathname !== "/history") {
-                if (authStatus) {
                   addToHistory(videoData, dispatch, authToken);
-                } else {
-                  navigate("/login");
-                }
               }
             }}
           >

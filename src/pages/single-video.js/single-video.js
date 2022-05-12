@@ -1,7 +1,7 @@
 import "./single-video.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {Navigation, Sidebar} from "../../components/compIndex"
 import {
   addToLikedVideos,
@@ -14,12 +14,13 @@ import { useAuthContext } from "../../contexts/auth-context";
 import { VideoCard } from "../../components/compIndex";
 
 function SingleVideo() {
+  const navigate = useNavigate();
   const { videoId } = useParams();
   const [singleVideo, setSingleVideo] = useState({});
   const [relatedVideos, setRelatedVideos] = useState([]);
   const { state, dispatch } = useVideoContext();
   const { authCred } = useAuthContext();
-  const { authToken } = authCred;
+  const { authToken, authStatus } = authCred;
   const { likedVideos, watchLater, videosData } = state;
 
   useEffect(() => {
@@ -66,9 +67,13 @@ function SingleVideo() {
             ) : (
               <div
                 className="single__cta"
-                onClick={() =>
-                  addToLikedVideos(singleVideo, dispatch, authToken)
-                }
+                onClick={() => {
+                    if(authStatus){
+                        addToLikedVideos(singleVideo, dispatch, authToken)
+                    } else{
+                        navigate("/login")
+                    }
+                }}
               >
                 <i class="bx bxs-heart"></i>
                 <p>Like</p>
@@ -91,9 +96,13 @@ function SingleVideo() {
             ) : (
               <div
                 className="single__cta"
-                onClick={() =>
-                  saveToWatchLater(singleVideo, dispatch, authToken)
-                }
+                onClick={() => {
+                    if(authStatus){
+                        saveToWatchLater(singleVideo, dispatch, authToken)
+                    } else{
+                        navigate("/login")
+                    }
+                }}
               >
                 <i class="bx bxs-watch"></i>
                 <p>Watch later</p>
