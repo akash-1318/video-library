@@ -3,8 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import { Navigation } from "../../components/compIndex";
-import { Sidebar } from "../../components/compIndex";
+import { Navigation, Sidebar } from "../../components/compIndex";
 import { useAuthContext } from "../../contexts/auth-context";
 
 function Signup() {

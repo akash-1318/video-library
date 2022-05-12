@@ -1,7 +1,5 @@
 import "./history.css";
-import { Navigation } from "../../components/navigation/navigation";
-import { Sidebar } from "../../components/sidebar/sidebar";
-import { VideoCard } from "../../components/compIndex";
+import { Navigation, Sidebar, VideoCard } from "../../components/compIndex";
 import { useVideoContext } from "../../contexts/video-context";
 import { useAuthContext } from "../../contexts/auth-context";
 import { clearAllHistory } from "../../utils/handle-history";

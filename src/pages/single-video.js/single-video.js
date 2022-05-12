@@ -2,19 +2,16 @@ import "./single-video.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Navigation } from "../../components/navigation/navigation";
-import { Sidebar } from "../../components/sidebar/sidebar";
+import {Navigation, Sidebar} from "../../components/compIndex"
 import {
   addToLikedVideos,
   removeFromLikedVideos,
-} from "../../utils/handleLikedVideos";
-import {
   saveToWatchLater,
   removeFromWatchLater,
-} from "../../utils/handle-watch-later";
+} from "../../utils/utils-index";
 import { useVideoContext } from "../../contexts/video-context";
 import { useAuthContext } from "../../contexts/auth-context";
-import {VideoCard} from "../../components/compIndex"
+import { VideoCard } from "../../components/compIndex";
 
 function SingleVideo() {
   const { videoId } = useParams();
@@ -31,7 +28,11 @@ function SingleVideo() {
         const resp = await axios.get(`/api/video/${videoId}`);
         console.log(resp);
         setSingleVideo(resp.data.video);
-        setRelatedVideos(videosData.filter((video) => video.category === resp.data.video.category))
+        setRelatedVideos(
+          videosData.filter(
+            (video) => video.category === resp.data.video.category
+          )
+        );
       } catch (err) {
         console.log(err);
       }
@@ -45,12 +46,12 @@ function SingleVideo() {
       <div className="main__container">
         <Sidebar />
         <section className="main__video-container">
-            <iframe
-              className="video-player"
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${videoId}`}
-            ></iframe>
+          <iframe
+            className="video-player"
+            width="100%"
+            height="100%"
+            src={`https://www.youtube.com/embed/${videoId}`}
+          ></iframe>
           <div className="video__cta">
             {likedVideos.find((video) => video._id === singleVideo._id) ? (
               <div
@@ -106,12 +107,10 @@ function SingleVideo() {
           <p className="description__para">{singleVideo.description}</p>
         </section>
         <aside className="related__videos-container">
-            <h2 className="related__heading">Suggestion</h2>
-            {relatedVideos.map((video) => {
-                return(
-                    <VideoCard videoData = {video}/>
-                )
-            })}
+          <h2 className="related__heading">Suggestion</h2>
+          {relatedVideos.map((video) => {
+            return <VideoCard videoData={video} />;
+          })}
         </aside>
       </div>
     </>

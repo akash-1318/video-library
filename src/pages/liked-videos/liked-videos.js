@@ -1,8 +1,6 @@
 import "./liked-videos.css";
-import { Navigation } from "../../components/navigation/navigation";
-import { Sidebar } from "../../components/sidebar/sidebar";
+import {Navigation,Sidebar, VideoCard} from "../../components/compIndex"
 import {useVideoContext} from "../../contexts/video-context";
-import {VideoCard} from "../../components/compIndex"
 import empty from "../../assets/images/Empty-bag.svg"
 
 function LikedVideos() {

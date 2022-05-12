@@ -4,9 +4,15 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../contexts/auth-context";
 import { useVideoContext } from "../../contexts/video-context";
-import { addToLikedVideos, removeFromLikedVideos } from "../../utils/handleLikedVideos";
-import { saveToWatchLater, removeFromWatchLater } from "../../utils/handle-watch-later";
-import {addToHistory, deleteFromHistory, clearAllHistory} from "../../utils/handle-history"
+import {
+  addToLikedVideos,
+  removeFromLikedVideos,
+  saveToWatchLater,
+  removeFromWatchLater,
+  addToHistory,
+  deleteFromHistory,
+  clearAllHistory,
+} from "../../utils/utils-index";
 
 function VideoCard({ videoData }) {
   const navigate = useNavigate();
@@ -19,22 +25,25 @@ function VideoCard({ videoData }) {
 
   const openVideoPage = (e) => {
     e.preventDefault();
-    navigate(`/video/${videoData._id}`)
-  }
+    navigate(`/video/${videoData._id}`);
+  };
 
   return (
     <div className="video__card-conatiner">
       <div class="card">
         <div class="card__container">
-          <div class="card__img" onClick = {() => {
-            if(location.pathname !== "/history"){
-                if(authStatus){
-                    addToHistory(videoData, dispatch, authToken)
-                  } else{
-                      navigate("/login")
-                  }
+          <div
+            class="card__img"
+            onClick={() => {
+              if (location.pathname !== "/history") {
+                if (authStatus) {
+                  addToHistory(videoData, dispatch, authToken);
+                } else {
+                  navigate("/login");
                 }
-            }}>
+              }
+            }}
+          >
             <img
               src={`http://i1.ytimg.com/vi/${videoData._id}/0.jpg`}
               alt="card-img"
@@ -120,10 +129,10 @@ function VideoCard({ videoData }) {
                   </p>
                 )}
                 {location.pathname === "/history" && (
-                    <p
+                  <p
                     className="menu__name"
                     onClick={() => {
-                       deleteFromHistory(videoData, dispatch, authToken);
+                      deleteFromHistory(videoData, dispatch, authToken);
                     }}
                   >
                     {" "}
