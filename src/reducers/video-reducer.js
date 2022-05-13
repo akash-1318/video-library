@@ -15,7 +15,9 @@ const videoReducer = (state, action) => {
         case "HANDLE_PLAYLIST":
             return {...state, playlists : action.payload}  
         case "SET_CURRENT_VIDEO":
-            return {...state, currentVideo : action.payload}  
+            return {...state, currentVideo : action.payload}
+        case "UPDATE_PLAYLIST":
+            return {...state, playlists : state.playlists.map((item) => item._id === action.payload._id ? action.payload : item)} 
     }
 }
 

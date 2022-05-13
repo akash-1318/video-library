@@ -35,6 +35,7 @@ const addVideoToPlaylist = async(title, playlistId, video, dispatch, authToken) 
             }
             )
             console.log(resp)
+            dispatch({type : "UPDATE_PLAYLIST", payload : resp.data.playlist})
             toast.success(`Video added to ${title} playlist`);
     } catch(err){
         console.log(err)
@@ -53,6 +54,7 @@ const deleteVideoFromPlaylist = async(title, playlistId, video, dispatch, authTo
             }
             )
             console.log(resp)
+            dispatch({type : "UPDATE_PLAYLIST", payload : resp.data.playlist})
             toast.success(`Video deleted from ${title} playlist`);
     } catch(err){
         console.log(err)
@@ -60,7 +62,7 @@ const deleteVideoFromPlaylist = async(title, playlistId, video, dispatch, authTo
     }
 }
 
-const deletePlaylist = async(title, playlistId, video, dispatch, authToken) => {
+const deletePlaylist = async(title, playlistId, dispatch, authToken) => {
     try{
         const resp = await axios.delete(
             `/api/user/playlists/${playlistId}`,
