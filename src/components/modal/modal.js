@@ -3,7 +3,7 @@ import { usePrimaryStatesContext } from "../../contexts/primary-states-context";
 import { useState } from "react";
 import { useAuthContext } from "../../contexts/auth-context";
 import { useVideoContext } from "../../contexts/video-context";
-import { addPlaylist, addVideoToPlaylist, deleteVideoFromPlaylist } from "../../utils/utils-index";
+import { addPlaylist, addVideoToPlaylist, deleteVideoFromPlaylist, deletePlaylist } from "../../utils/utils-index";
 
 function Modal () {
   const { modal, setModal } = usePrimaryStatesContext();
@@ -42,7 +42,7 @@ function Modal () {
                     />
                     {playlist.title}
                   </label>
-                  <i class="bx bx-trash-alt"></i>
+                  <i class="bx bx-trash-alt" onClick={() => deletePlaylist(playlistName, playlist._id, currentVideo, dispatch, authToken)}></i>
                 </div>
               );
             })}
