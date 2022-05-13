@@ -2,7 +2,7 @@ import "./single-video.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import {Navigation, Sidebar} from "../../components/compIndex"
+import { Navigation, Sidebar } from "../../components/compIndex";
 import {
   addToLikedVideos,
   removeFromLikedVideos,
@@ -11,7 +11,8 @@ import {
 } from "../../utils/utils-index";
 import { useVideoContext } from "../../contexts/video-context";
 import { useAuthContext } from "../../contexts/auth-context";
-import { VideoCard } from "../../components/compIndex";
+import {usePrimaryStatesContext} from "../../contexts/primary-states-context"
+import { VideoCard, Modal } from "../../components/compIndex";
 
 function SingleVideo() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ function SingleVideo() {
   const { authCred } = useAuthContext();
   const { authToken, authStatus } = authCred;
   const { likedVideos, watchLater, videosData } = state;
+  const { modal, setModal } = usePrimaryStatesContext();
 
   useEffect(() => {
     const getSingleVideo = async () => {
@@ -68,11 +70,11 @@ function SingleVideo() {
               <div
                 className="single__cta"
                 onClick={() => {
-                    if(authStatus){
-                        addToLikedVideos(singleVideo, dispatch, authToken)
-                    } else{
-                        navigate("/login")
-                    }
+                  if (authStatus) {
+                    addToLikedVideos(singleVideo, dispatch, authToken);
+                  } else {
+                    navigate("/login");
+                  }
                 }}
               >
                 <i class="bx bxs-heart"></i>
@@ -81,7 +83,14 @@ function SingleVideo() {
             )}
             <div className="single__cta">
               <i class="bx bxs-playlist"></i>
-              <p>Save</p>
+              <p onClick={ () => {
+                    dispatch({type : "SET_CURRENT_VIDEO", payload : singleVideo})
+                    if(authStatus) {
+                        setModal(!modal)
+                    } else{
+                        navigate("/login");
+                    }
+                }}>Save</p>
             </div>
             {watchLater.find((video) => video._id === singleVideo._id) ? (
               <div
@@ -97,11 +106,11 @@ function SingleVideo() {
               <div
                 className="single__cta"
                 onClick={() => {
-                    if(authStatus){
-                        saveToWatchLater(singleVideo, dispatch, authToken)
-                    } else{
-                        navigate("/login")
-                    }
+                  if (authStatus) {
+                    saveToWatchLater(singleVideo, dispatch, authToken);
+                  } else {
+                    navigate("/login");
+                  }
                 }}
               >
                 <i class="bx bxs-watch"></i>
@@ -122,6 +131,7 @@ function SingleVideo() {
           })}
         </aside>
       </div>
+      {modal ? (<Modal />) : null}
     </>
   );
 }
