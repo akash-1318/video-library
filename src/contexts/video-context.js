@@ -11,6 +11,7 @@ const initialStates = {
     watchLater : [],
     history : [],
     playlists : [],
+    currentVideo : {},
     singleCategory : "All",
 }
 

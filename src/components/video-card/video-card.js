@@ -13,6 +13,7 @@ import {
   addToHistory,
   deleteFromHistory,
 } from "../../utils/utils-index";
+import {Modal} from "../compIndex"
 
 function VideoCard({ videoData }) {
   const navigate = useNavigate();
@@ -97,6 +98,7 @@ function VideoCard({ videoData }) {
                   </p>
                 )}
                 <p className="menu__name" onClick={ () => {
+                    dispatch({type : "SET_CURRENT_VIDEO", payload : videoData})
                     if(authStatus) {
                         setModal(!modal)
                     } else{
@@ -147,6 +149,7 @@ function VideoCard({ videoData }) {
           </div>
         </div>
       </div>
+      {modal ? (<Modal />) : null}
     </div>
   );
 }

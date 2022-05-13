@@ -14,6 +14,7 @@ const addPlaylist = async(title, dispatch, authToken) => {
                 },
             }
             )
+            console.log(resp)
             dispatch({type : "ADD_PLAYLIST", payload : resp.data.playlists})
             toast.success(`${title} playlist created`);
     } catch(err){
@@ -22,4 +23,41 @@ const addPlaylist = async(title, dispatch, authToken) => {
     }
 }
 
-export {addPlaylist}
+const addVideoToPlaylist = async(title, playlistId, video, dispatch, authToken) => {
+    try{
+        const resp = await axios.post(
+            `/api/user/playlists/${playlistId}`,
+            {video},
+            {
+                headers:{
+                    authorization: authToken,
+                },
+            }
+            )
+            console.log(resp)
+            toast.success(`Video added to ${title} playlist`);
+    } catch(err){
+        console.log(err)
+        toast.error("Error while adding video to playlist");
+    }
+}
+
+const deleteVideoFromPlaylist = async(title, playlistId, video, dispatch, authToken) => {
+    try{
+        const resp = await axios.delete(
+            `/api/user/playlists/${playlistId}/${video._id}`,
+            {
+                headers:{
+                    authorization: authToken,
+                },
+            }
+            )
+            console.log(resp)
+            toast.success(`Video deleted from ${title} playlist`);
+    } catch(err){
+        console.log(err)
+        toast.error(`Error while deleting video from ${title} playlist`);
+    }
+}
+
+export {addPlaylist, addVideoToPlaylist, deleteVideoFromPlaylist}
