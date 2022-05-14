@@ -16,7 +16,7 @@ function Login() {
     password: "",
   });
 
-  const from  = location.state?.from?.pathname || "/"
+  const from  = location.state?.from?.pathname || "/videolisting"
 
   const loginHandler = async ({ email, password }) => {
     try {

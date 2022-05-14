@@ -9,7 +9,6 @@ import {
   deleteVideoFromPlaylist,
   deletePlaylist,
 } from "../../utils/utils-index";
-import { Playlist } from "../../pages";
 
 function Modal() {
   const { modal, setModal } = usePrimaryStatesContext();
@@ -48,6 +47,11 @@ function Modal() {
     }
   };
 
+  const isVideoAvailable = (playlist, currentVideo) => {
+    return playlist.videos
+    .find((item) => item._id === currentVideo._id)
+}
+
   return (
     <>
       <div className="modal__container">
@@ -63,6 +67,7 @@ function Modal() {
                   <label className="playlist__name">
                     <input
                       type="checkbox"
+                      checked = {isVideoAvailable(playlist, currentVideo)}
                       onChange={(e) =>
                         addAndDeletePlaylistVideo(
                           e,

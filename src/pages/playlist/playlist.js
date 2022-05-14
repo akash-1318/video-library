@@ -11,8 +11,7 @@ function Playlist() {
   const { playlists, playlistVideos } = state;
   const { authCred } = useAuthContext();
   const { authToken } = authCred;
-  console.log(playlists);
-  console.log(playlistVideos)
+
   return (
     <>
       <Navigation />

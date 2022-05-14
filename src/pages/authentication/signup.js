@@ -20,7 +20,7 @@ function Signup() {
     confirmPassword: "",
   });
 
-  const from  = location.state?.from?.pathname || "/"
+  const from  = location.state?.from?.pathname || "/videolisting"
 
   const signupCredHandler = async ({
     firstname,

@@ -19,7 +19,7 @@ import MockMan from "mockman-js";
 function App() {
   return (
     <div className="App">
-      <ToastContainer autoClose={1000} />
+      <ToastContainer autoClose={1000} style={{fontSize : "1.5rem"}} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/videolisting" element={<VideoListing />} />

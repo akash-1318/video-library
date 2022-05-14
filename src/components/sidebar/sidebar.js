@@ -1,4 +1,5 @@
 import "./sidebar.css";
+import {toast} from "react-toastify";
 import {Link, useNavigate, NavLink} from "react-router-dom"
 import { usePrimaryStatesContext } from "../../contexts/primary-states-context";
 import {useAuthContext} from "../../contexts/auth-context"
@@ -6,13 +7,14 @@ import {useAuthContext} from "../../contexts/auth-context"
 function Sidebar() {
     const navigate = useNavigate();
   const { sidebar, setSidebar } = usePrimaryStatesContext();
-  const {authCred} = useAuthContext();
+  const {authCred, setAuthCred} = useAuthContext();
   const {authToken, authStatus} = authCred;
 
   const logout = () => {
     localStorage.clear();
     setAuthCred({ ...authCred, authToken: null, authStatus: false });
     navigate("/videolisting")
+    toast.success("You have logged out");
   };
 
   const getActiveStyle = ({ isActive }) => ({
