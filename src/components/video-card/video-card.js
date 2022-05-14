@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../contexts/auth-context";
 import { useVideoContext } from "../../contexts/video-context";
+import {usePrimaryStatesContext} from "../../contexts/primary-states-context"
 import {
   addToLikedVideos,
   removeFromLikedVideos,
@@ -12,6 +13,7 @@ import {
   addToHistory,
   deleteFromHistory,
 } from "../../utils/utils-index";
+import {Modal} from "../compIndex"
 
 function VideoCard({ videoData }) {
   const navigate = useNavigate();
@@ -21,6 +23,7 @@ function VideoCard({ videoData }) {
   const { state, dispatch } = useVideoContext();
   const { authToken, authStatus } = authCred;
   const { likedVideos, watchLater, history } = state;
+  const { modal, setModal } = usePrimaryStatesContext();
 
   const openVideoPage = (e) => {
     e.preventDefault();
@@ -94,7 +97,14 @@ function VideoCard({ videoData }) {
                     <i class="bx bxs-watch"></i> Save to watch later
                   </p>
                 )}
-                <p className="menu__name">
+                <p className="menu__name" onClick={ () => {
+                    dispatch({type : "SET_CURRENT_VIDEO", payload : videoData})
+                    if(authStatus) {
+                        setModal(!modal)
+                    } else{
+                        navigate("/login");
+                    }
+                }}>
                   {" "}
                   <i class="bx bxs-playlist"></i> Save to play list
                 </p>
@@ -139,6 +149,7 @@ function VideoCard({ videoData }) {
           </div>
         </div>
       </div>
+      {modal ? (<Modal />) : null}
     </div>
   );
 }

@@ -1,0 +1,28 @@
+.videos__container.playlist{
+    justify-content: left;
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.playlist__conatiner{
+    width: 100%;
+}
+
+.playlist__header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.playlist__header > i{
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.playlist__header > i:hover{
+    color: var(--secondry-color);
+}
