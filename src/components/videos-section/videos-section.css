@@ -22,6 +22,10 @@
     color: var(--secondry-color);
 }
 
+.category__item.dark{
+    background-color: var(--dark-theme);
+}
+
 .category__item:hover{
     background-color: var(--secondry-color);
     color: var(--white-color);

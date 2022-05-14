@@ -1,2 +1,7 @@
 @import url(https://milkyway-ui.netlify.app/components/css/main.css);
 @import url(style/common.css);
+
+.App.dark{
+    background-color: var(--dark-theme);
+    color: var(--white-color);
+}

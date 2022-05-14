@@ -5,10 +5,12 @@ import { toast } from "react-toastify";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Navigation, Sidebar } from "../../components/compIndex";
 import { useAuthContext } from "../../contexts/auth-context";
+import {useThemeContext} from "../../contexts/theme-context"
 
 function Signup() {
   const navigate = useNavigate();
   const location = useLocation();
+  const {theme} = useThemeContext();
   const { authCred, setAuthCred } = useAuthContext();
   const [passwordType, setPasswordType] = useState(true);
   const [confPasswordType, setConfPasswordType] = useState(true);
@@ -67,7 +69,7 @@ function Signup() {
               signupCredHandler(signupCred);
             }}
           >
-            <div className="credentials signup__form">
+            <div className={`credentials signup__form ${theme === "light" ? "" : "dark"}`}>
               <h1>Signup</h1>
               <div className="cred__input-field">
                 <label>First Name</label>
@@ -158,7 +160,7 @@ function Signup() {
               <button type="submit" className="btn solid__primary cred__button">
                 Signup
               </button>
-              <Link to="/login">
+              <Link to="/login" className="link__style">
                 <div className="create__new-account">
                   Already have an account{" "}
                   <i className="bx bx-right-arrow-alt"></i>{" "}

@@ -7,6 +7,11 @@
     z-index: 6;
 }
 
+.header__nav.dark{
+    background-color: var(--dark-theme);
+    box-shadow: var(--dark-box-shadow);
+}
+
 .library__logo-name{
     font-size: 2rem;
     font-weight: 600;
@@ -39,6 +44,10 @@
     padding: .5rem;
     border: 2px solid var(--white-color);
     right: 3px;
+}
+
+.search__icon.dark{
+    border: 2px solid var(--dark-theme);
 }
 
 .sidebar__toggle-btn{

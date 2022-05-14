@@ -1,11 +1,13 @@
 import "./navigation.css";
 import { Link } from "react-router-dom";
 import { usePrimaryStatesContext } from "../../contexts/primary-states-context";
+import {useThemeContext} from "../../contexts/theme-context"
 
 function Navigation() {
   const { sidebar, setSidebar } = usePrimaryStatesContext();
+  const {theme} = useThemeContext();
   return (
-    <header className="header__nav">
+    <header className={`header__nav ${theme === "light" ? "" : "dark"}`}>
       <div className="header__nav-left">
         <div
           className={`sidebar__toggle-btn ${sidebar ? "rotate" : ""}`}
@@ -20,7 +22,7 @@ function Navigation() {
         </Link>
       </div>
       <div className="header__nav-middle">
-        <div className="search__icon">
+        <div className={`search__icon ${theme === "light" ? "" : "dark"}`}>
           <i className="bx bx-search-alt-2"></i>
         </div>
         <input placeholder="search" className="header__search" />

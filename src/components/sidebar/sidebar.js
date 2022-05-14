@@ -3,9 +3,12 @@ import {toast} from "react-toastify";
 import {Link, useNavigate, NavLink} from "react-router-dom"
 import { usePrimaryStatesContext } from "../../contexts/primary-states-context";
 import {useAuthContext} from "../../contexts/auth-context"
+import {useThemeContext} from "../../contexts/theme-context"
+import { useEffect } from "react";
 
 function Sidebar() {
     const navigate = useNavigate();
+    const {theme, setTheme} = useThemeContext();
   const { sidebar, setSidebar } = usePrimaryStatesContext();
   const {authCred, setAuthCred} = useAuthContext();
   const {authToken, authStatus} = authCred;
@@ -22,8 +25,16 @@ function Sidebar() {
     backgroundColor : isActive ? "var(--primary-color)" : null
   });
 
+  useEffect(()=>{
+    localStorage.setItem("Theme", theme)
+  },[theme])
+
+  const themeHandler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light")
+  }
+
   return (
-    <aside className={`sidebar__menus ${sidebar ? "appear" : ""}`} onClick={() => setSidebar(false)}>
+    <aside className={`sidebar__menus ${sidebar ? "appear" : ""} ${theme === "light" ? "" : "dark"}`} onClick={() => setSidebar(false)}>
       <ul className="sidebar__menu-container">
       <NavLink style={getActiveStyle} to="/videolisting" className="link__style">
         <li className="sidebar__menu">
@@ -65,6 +76,21 @@ function Sidebar() {
           </span>
         </li>
         </NavLink>
+        {theme === "light" ? (
+          <li className="sidebar__menu" onClick={themeHandler}>
+          <i class='bx bxs-moon' ></i>
+            <span className="icon__name">
+              <p>Dark Mode</p>
+            </span>
+          </li>
+        ) : (
+          <li className="sidebar__menu" onClick={themeHandler}>
+        <i class='bx bxs-sun' ></i>
+          <span className="icon__name">
+            <p>Light Up</p>
+          </span>
+        </li>
+        )}
         {authStatus ? (
             <li className="sidebar__menu bottom__menu" onClick={logout}>
               <i class='bx bx-log-out-circle'></i>

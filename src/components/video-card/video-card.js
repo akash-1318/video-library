@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../contexts/auth-context";
 import { useVideoContext } from "../../contexts/video-context";
 import {usePrimaryStatesContext} from "../../contexts/primary-states-context"
+import { useThemeContext } from "../../contexts/theme-context";
 import {
   addToLikedVideos,
   removeFromLikedVideos,
@@ -17,6 +18,7 @@ import {Modal} from "../compIndex"
 
 function VideoCard({ videoData }) {
   const navigate = useNavigate();
+  const {theme} = useThemeContext();
   const location = useLocation();
   const [showMenu, setShowMenu] = useState(false);
   const { authCred } = useAuthContext();
@@ -32,7 +34,7 @@ function VideoCard({ videoData }) {
 
   return (
     <div className="video__card-conatiner">
-      <div class="card">
+      <div class={`card ${theme === "light" ? "" : "dark"}`}>
         <div class="card__container">
           <div
             class="card__img"
@@ -69,7 +71,7 @@ function VideoCard({ videoData }) {
             </span>
             {showMenu === true ? (
               <div
-                className={`menu__bar-conatiner`}
+                className={`menu__bar-conatiner ${theme === "light" ? "" : "dark"}`}
                 onClick={() => setShowMenu(false)}
               >
                 {watchLater.find((video) => video._id === videoData._id) ? (

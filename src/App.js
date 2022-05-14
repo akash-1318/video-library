@@ -14,11 +14,13 @@ import {
   Playlist,
 } from "./pages/index";
 import { RequireAuth } from "./utils/utils-index";
+import { useThemeContext } from "./contexts/theme-context";
 import MockMan from "mockman-js";
 
 function App() {
+  const {theme} = useThemeContext();
   return (
-    <div className="App">
+    <div className={`App ${theme === "light" ? "" : "dark"}`}>
       <ToastContainer autoClose={1000} style={{fontSize : "1.5rem"}} />
       <Routes>
         <Route path="/" element={<Home />} />

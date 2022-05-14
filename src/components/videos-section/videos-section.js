@@ -2,9 +2,11 @@ import "./videos-section.css";
 import { VideoCard } from "../compIndex";
 import { useVideoContext } from "../../contexts/video-context";
 import { filterVideos } from "../../utils/filter-videos";
+import {useThemeContext} from "../../contexts/theme-context"
 
 function VideosSection() {
   const { state, dispatch } = useVideoContext();
+  const {theme} = useThemeContext();
   const { videosData, categoriesData, singleCategory } = state;
   const filteredVideos = filterVideos(videosData, singleCategory);
 
@@ -18,7 +20,7 @@ function VideosSection() {
     <section className="main__video-container">
       <div className="category__container">
         <button
-          className={`category__item ${filterActive("All")}`}
+          className={`category__item ${filterActive("All")} ${theme === "light" ? "" : "dark"} `}
           onClick={() => dispatch({ type: "SET_CATEGORY", payload: "All" })}
         >
           All
@@ -26,7 +28,7 @@ function VideosSection() {
         {categoriesData.map((item) => {
           return (
             <button
-              className={`category__item ${filterActive(item.categoryName)}`}
+              className={`category__item ${filterActive(item.categoryName)} ${theme === "light" ? "" : "dark"}`}
               onClick={() =>
                 dispatch({ type: "SET_CATEGORY", payload: item.categoryName })
               }

@@ -5,10 +5,12 @@ import { toast } from "react-toastify";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Navigation, Sidebar } from "../../components/compIndex";
 import { useAuthContext } from "../../contexts/auth-context";
+import {useThemeContext} from "../../contexts/theme-context"
 
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
+  const {theme} = useThemeContext();
   const { authCred, setAuthCred } = useAuthContext();
   const [passwordType, setPasswordType] = useState(true);
   const [loginCred, setLoginCred] = useState({
@@ -47,7 +49,7 @@ function Login() {
               loginHandler(loginCred);
             }}
           >
-            <div className="credentials">
+            <div className={`credentials ${theme === "light" ? "" : "dark"}`}>
               <h1>Login</h1>
               <div className="cred__input-field">
                 <label>Email adddress</label>
@@ -102,7 +104,7 @@ function Login() {
               >
                 Login as guest
               </button>
-              <Link to="/signup">
+              <Link to="/signup" className="link__style">
                 <div className="create__new-account">
                   create new account <i class="bx bx-right-arrow-alt"></i>{" "}
                 </div>

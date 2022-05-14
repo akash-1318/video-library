@@ -18,6 +18,10 @@
     animation: modal .3s linear .1s 1 normal backwards;
 }
 
+.modal.dark{
+    background-color: #101035;
+}
+
 @keyframes modal {
     0%{
         opacity: 0;
