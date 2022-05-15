@@ -18,6 +18,12 @@ function VideosSection() {
   
   return (
     <section className="main__video-container">
+      <div className="header__nav-middle inside__video-container">
+        <div className={`search__icon ${theme === "light" ? "" : "dark"}`}>
+          <i className="bx bx-search-alt-2"></i>
+        </div>
+        <input placeholder="search" className="header__search" />
+      </div>
       <div className="category__container">
         <button
           className={`category__item ${filterActive("All")} ${theme === "light" ? "" : "dark"} `}

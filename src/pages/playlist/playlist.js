@@ -19,15 +19,6 @@ function Playlist() {
         <Sidebar />
         <section className="main__video-container">
           <h1 className="page__text">Playlists</h1>
-          {playlists.length > 0 && (
-            <button
-              className="clear__history"
-            //   onClick={() => clearAllHistory(dispatch, authToken)}
-            >
-              {" "}
-              <i class="bx bx-trash"></i> Delete all Playlists
-            </button>
-          )}
           <div className="videos__container playlist">
             {playlists.length === 0 ? (
               <>

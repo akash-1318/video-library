@@ -21,7 +21,7 @@ function Navigation() {
           </p>
         </Link>
       </div>
-      <div className="header__nav-middle">
+      <div className="header__nav-middle max-width-765">
         <div className={`search__icon ${theme === "light" ? "" : "dark"}`}>
           <i className="bx bx-search-alt-2"></i>
         </div>

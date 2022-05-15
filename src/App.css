@@ -1,5 +1,6 @@
 @import url(https://milkyway-ui.netlify.app/components/css/main.css);
 @import url(style/common.css);
+@import url(style/responsive.css);
 
 .App.dark{
     background-color: var(--dark-theme);
