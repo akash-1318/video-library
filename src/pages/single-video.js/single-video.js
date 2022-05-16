@@ -18,7 +18,6 @@ function SingleVideo() {
   const navigate = useNavigate();
   const { videoId } = useParams();
   const [singleVideo, setSingleVideo] = useState({});
-  const [relatedVideos, setRelatedVideos] = useState([]);
   const { state, dispatch } = useVideoContext();
   const { authCred } = useAuthContext();
   const { authToken, authStatus } = authCred;
@@ -31,11 +30,6 @@ function SingleVideo() {
         const resp = await axios.get(`/api/video/${videoId}`);
         console.log(resp);
         setSingleVideo(resp.data.video);
-        setRelatedVideos(
-          videosData.filter(
-            (video) => video.category === resp.data.video.category
-          )
-        );
       } catch (err) {
         console.log(err);
       }
@@ -125,8 +119,8 @@ function SingleVideo() {
           <p className="description__para">{singleVideo.description}</p>
         </section>
         <aside className="related__videos-container">
-          <h2 className="related__heading">Suggestion</h2>
-          {relatedVideos.map((video) => {
+          <h2 className="related__heading">Suggestions</h2>
+          {videosData.map((video) => {
             return <VideoCard videoData={video} />;
           })}
         </aside>
