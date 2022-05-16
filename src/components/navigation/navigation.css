@@ -44,6 +44,8 @@
     padding: .5rem;
     border: 2px solid var(--white-color);
     right: 3px;
+    height: 3.3rem;
+    width: 3.3rem;
 }
 
 .search__icon.dark{

@@ -1,5 +1,6 @@
 .video-player{
     height: 80vh !important;
+    border: none !important;
 }
 
 .video__cta{
