@@ -1,4 +1,4 @@
-export {filterVideos} from "./filter-videos"
+export {filterVideos, filteredSearchedVideos} from "./filter-videos"
 export {addToLikedVideos, removeFromLikedVideos} from "./handleLikedVideos"
 export {saveToWatchLater, removeFromWatchLater} from "./handle-watch-later"
 export {addToHistory, deleteFromHistory, clearAllHistory} from "./handle-history"

@@ -1,17 +1,19 @@
 import "./videos-section.css";
 import { VideoCard } from "../compIndex";
 import { useVideoContext } from "../../contexts/video-context";
-import { filterVideos } from "../../utils/filter-videos";
+import {usePrimaryStatesContext} from "../../contexts/primary-states-context"
+import { filteredSearchedVideos } from "../../utils/filter-videos";
 import {useThemeContext} from "../../contexts/theme-context"
-import { useState } from "react";
 
 function VideosSection() {
   const { state, dispatch } = useVideoContext();
+  const {searchInput, setSearchInput} = usePrimaryStatesContext();
   const {theme} = useThemeContext();
   const { videosData, categoriesData, singleCategory } = state;
-  const [getSearchedText, setSearchedText] = useState("");
 
-  const filteredVideos = filterVideos(videosData, singleCategory);
+  console.log(searchInput)
+
+  const getFilteredSearchedVideos = filteredSearchedVideos(videosData, singleCategory, searchInput);
 
   const filterActive = (category) => {
       if(category === singleCategory){
@@ -26,7 +28,7 @@ function VideosSection() {
           <i className="bx bx-search-alt-2"></i>
         </div>
         <input placeholder="search" className="header__search"
-        onChange = {(e) => handleSearch(e)} 
+        onChange = {(e) => setSearchInput(e.target.value)} 
         />
       </div>
       <div className="category__container">
@@ -50,7 +52,7 @@ function VideosSection() {
         })}
       </div>
       <div className="videos__container">
-        {filteredVideos.map((video) => {
+        {getFilteredSearchedVideos.map((video) => {
           return <VideoCard videoData={video} key = {video._id} />;
         })}
       </div>

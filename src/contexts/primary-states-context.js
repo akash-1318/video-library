@@ -5,8 +5,9 @@ const PrimaryStates = createContext();
 const PrimaryStatesProvider = ({children}) => {
     const [sidebar, setSidebar] = useState(false)
     const [modal, setModal] = useState(false)
+    const [searchInput, setSearchInput] = useState("")
     return(
-        <PrimaryStates.Provider value = {{sidebar, setSidebar, modal, setModal}}>
+        <PrimaryStates.Provider value = {{sidebar, setSidebar, modal, setModal, searchInput, setSearchInput}}>
             {children}
         </PrimaryStates.Provider>
     )
