@@ -59,7 +59,7 @@ function Modal() {
       <div className="modal__container">
         <div className={`modal ${theme === "light" ? "" : "dark"}`}>
           <div className="modal__header">
-            <p onClick={() => console.log(currentVideo)}>Save to...</p>
+            <p>Save to...</p>
             <i class="bx bx-x" onClick={() => setModal(!modal)}></i>
           </div>
           <div className="playlist__container">

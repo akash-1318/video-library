@@ -14,7 +14,6 @@ const addPlaylist = async(title, dispatch, authToken) => {
                 },
             }
             )
-            console.log(resp)
             dispatch({type : "HANDLE_PLAYLIST", payload : resp.data.playlists})
             toast.success(`${title} playlist created`);
     } catch(err){
@@ -34,7 +33,6 @@ const addVideoToPlaylist = async(title, playlistId, video, dispatch, authToken) 
                 },
             }
             )
-            console.log(resp)
             dispatch({type : "UPDATE_PLAYLIST", payload : resp.data.playlist})
             toast.success(`Video added to ${title} playlist`);
     } catch(err){
@@ -53,7 +51,6 @@ const deleteVideoFromPlaylist = async(title, playlistId, video, dispatch, authTo
                 },
             }
             )
-            console.log(resp)
             dispatch({type : "UPDATE_PLAYLIST", payload : resp.data.playlist})
             toast.success(`Video deleted from ${title} playlist`);
     } catch(err){
@@ -72,7 +69,6 @@ const deletePlaylist = async(title, playlistId, dispatch, authToken) => {
                 },
             }
             )
-            console.log(resp)
             dispatch({type : "HANDLE_PLAYLIST", payload : resp.data.playlists})
             toast.success(`${title} playlist deleted`);
     } catch(err){

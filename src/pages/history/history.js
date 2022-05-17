@@ -10,7 +10,7 @@ function History() {
   const { history } = state;
   const { authCred } = useAuthContext();
   const { authToken } = authCred;
-  console.log(history);
+
   return (
     <>
       <Navigation />

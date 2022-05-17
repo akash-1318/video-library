@@ -11,8 +11,6 @@ function VideosSection() {
   const {theme} = useThemeContext();
   const { videosData, categoriesData, singleCategory } = state;
 
-  console.log(searchInput)
-
   const getFilteredSearchedVideos = filteredSearchedVideos(videosData, singleCategory, searchInput);
 
   const filterActive = (category) => {

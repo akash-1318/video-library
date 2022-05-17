@@ -45,7 +45,6 @@ function Signup() {
           email: email,
           password: password,
         });
-        console.log(encodedToken);
         localStorage.setItem("TOKEN", encodedToken);
         setAuthCred({ ...authCred, authToken: encodedToken, authStatus: true });
         toast.success("Successfully Signed In");

@@ -6,7 +6,6 @@ import empty from "../../assets/images/Empty-bag.svg";
 function WatchLater() {
   const { state } = useVideoContext();
   const { watchLater } = state;
-  console.log(watchLater);
   return (
     <>
       <Navigation />
