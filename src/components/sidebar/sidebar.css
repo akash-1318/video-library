@@ -1,7 +1,7 @@
 .sidebar__menus{
     width: 8.5rem;
     padding: 2rem 0rem;
-    /* height: calc(100vh - 7rem); */
+    height: calc(100vh - 7rem);
     overflow: hidden;
     color: var(--primary-color);
     background-color: var(--white-color);

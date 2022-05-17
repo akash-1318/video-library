@@ -40,9 +40,9 @@
     html {
         font-size: 46.5% !important;
     }
-    /* .sidebar__menus{
+    .sidebar__menus{
         height: calc(100vh - 5.4rem);
-    } */
+    }
 }
 
 @media only screen and (max-width : 400px){
