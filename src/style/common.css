@@ -24,6 +24,9 @@
     --slider-thumb-bg-color:#636363;
     --white-color : #ffffff;
     --tomato-color : #ff6347;
+    --secondry-light-color : #ffb4dd;
+    --dark-theme : #08081a;
+    --dark-box-shadow : 5px 0px 15px rgb(26 30 55);
 }
 
 *{

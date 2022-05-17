@@ -12,6 +12,10 @@
     position: relative;
 }
 
+.card.dark{
+    background-color: var(--dark-theme);
+}
+
 .card__img{
     position: relative;
     margin-bottom: 1rem;
@@ -109,6 +113,10 @@
     bottom: 9rem;
     z-index: 1;
     padding: 1rem;
+}
+
+.menu__bar-conatiner.dark{
+    background-color: var(--dark-theme);
 }
 
 .menu__name{

@@ -1,11 +1,14 @@
 .video-player{
     height: 80vh !important;
+    border: none !important;
 }
 
 .video__cta{
     display: flex;
+    flex-wrap: wrap;
     padding: 2rem 0rem;
-    gap: 4rem;
+    row-gap: 2rem;
+    column-gap: 4rem;
 }
 
 .single__cta{

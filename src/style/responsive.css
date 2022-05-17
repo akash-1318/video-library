@@ -1,0 +1,50 @@
+@media only screen and (max-width : 765px){
+    .max-width-765{
+        display: none;
+    }
+    .main__container > .sidebar__menus{
+        height: 90.5vh;
+    }
+}
+
+@media only screen and (max-width : 1000px){
+    .related__videos-container{
+        display: none;
+    }
+    .main__video-container > .video-player{
+        height: 45vh !important;
+    }
+}
+
+@media only screen and (min-width : 765px){
+    .inside__video-container{
+        display:none;
+    }
+}
+
+@media only screen and (max-width : 460px){
+    .empty__video-container > .empty__img{
+        width: 35rem;
+    }
+    .main__video-container > .video-player{
+        height: 25vh !important;
+    }
+    .main__container > .sidebar__menus{
+        height: 92.5vh;
+    }
+}
+
+@media only screen and (max-width : 400px){
+    .playlist__header{
+        justify-content: center;
+    }
+    .heading-primary{
+        margin-left: 2.5rem;
+    }
+}
+
+.header__nav-middle.inside__video-container{
+    margin: auto auto 2rem auto;
+    max-width: 35rem;
+    min-width: 25rem;
+}

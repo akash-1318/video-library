@@ -1,5 +1,6 @@
 import "./single-video.css";
 import axios from "axios";
+import Loader from "react-js-loader";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Navigation, Sidebar } from "../../components/compIndex";
@@ -18,7 +19,7 @@ function SingleVideo() {
   const navigate = useNavigate();
   const { videoId } = useParams();
   const [singleVideo, setSingleVideo] = useState({});
-  const [relatedVideos, setRelatedVideos] = useState([]);
+  const [loader, setLoader] = useState(true)
   const { state, dispatch } = useVideoContext();
   const { authCred } = useAuthContext();
   const { authToken, authStatus } = authCred;
@@ -29,13 +30,8 @@ function SingleVideo() {
     const getSingleVideo = async () => {
       try {
         const resp = await axios.get(`/api/video/${videoId}`);
-        console.log(resp);
+        setLoader(false)
         setSingleVideo(resp.data.video);
-        setRelatedVideos(
-          videosData.filter(
-            (video) => video.category === resp.data.video.category
-          )
-        );
       } catch (err) {
         console.log(err);
       }
@@ -49,7 +45,10 @@ function SingleVideo() {
       <div className="main__container">
         <Sidebar />
         <section className="main__video-container">
-          <iframe
+          {loader ? (
+            <Loader type="spinner-default" bgColor={"#ff4daf"} title={"loading"} color={"#ff4daf"} size={80}/>
+          ) : (<>
+                    <iframe
             className="video-player"
             width="100%"
             height="100%"
@@ -123,10 +122,11 @@ function SingleVideo() {
             {singleVideo.views} views • {singleVideo.uploaded}
           </p>
           <p className="description__para">{singleVideo.description}</p>
+          </>)}
         </section>
         <aside className="related__videos-container">
-          <h2 className="related__heading">Suggestion</h2>
-          {relatedVideos.map((video) => {
+          <h2 className="related__heading">Suggestions</h2>
+          {videosData.map((video) => {
             return <VideoCard videoData={video} />;
           })}
         </aside>

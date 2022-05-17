@@ -3,6 +3,7 @@ import { usePrimaryStatesContext } from "../../contexts/primary-states-context";
 import { useState } from "react";
 import { useAuthContext } from "../../contexts/auth-context";
 import { useVideoContext } from "../../contexts/video-context";
+import { useThemeContext } from "../../contexts/theme-context";
 import {
   addPlaylist,
   addVideoToPlaylist,
@@ -14,6 +15,7 @@ function Modal() {
   const { modal, setModal } = usePrimaryStatesContext();
   const { authCred } = useAuthContext();
   const { state, dispatch } = useVideoContext();
+  const {theme} = useThemeContext();
   const [playlistName, setPlaylistName] = useState("");
   const { authToken } = authCred;
   const { playlists, currentVideo } = state;
@@ -55,7 +57,7 @@ function Modal() {
   return (
     <>
       <div className="modal__container">
-        <div className="modal">
+        <div className={`modal ${theme === "light" ? "" : "dark"}`}>
           <div className="modal__header">
             <p onClick={() => console.log(currentVideo)}>Save to...</p>
             <i class="bx bx-x" onClick={() => setModal(!modal)}></i>
