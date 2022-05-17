@@ -30,13 +30,13 @@ function Navigation() {
         />
       </div>
       <div className="header__nav-right">
-        <a href="#">
+        <a href="https://github.com/akash-1318">
           <i className="bx bxl-github"></i>
         </a>
-        <a href="#">
+        <a href="https://www.linkedin.com/in/akash-sharma-0251051a1">
           <i className="bx bxl-linkedin"></i>
         </a>
-        <a href="#">
+        <a href="https://twitter.com/Akasharma18">
           <i className="bx bxl-twitter"></i>
         </a>
       </div>
