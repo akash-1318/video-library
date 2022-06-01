@@ -1,6 +1,7 @@
 import "./single-video.css";
 import axios from "axios";
 import Loader from "react-js-loader";
+import ReactPlayer from 'react-player'
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Navigation, Sidebar } from "../../components/compIndex";
@@ -48,12 +49,12 @@ function SingleVideo() {
           {loader ? (
             <Loader type="spinner-default" bgColor={"#ff4daf"} title={"loading"} color={"#ff4daf"} size={80}/>
           ) : (<>
-                    <iframe
-            className="video-player"
-            width="100%"
-            height="100%"
-            src={`https://www.youtube.com/embed/${videoId}`}
-          ></iframe>
+          <ReactPlayer 
+          className="video-player" 
+          width="100%" 
+          height="100%" 
+          controls={true} 
+          url={`https://www.youtube.com/embed/${videoId}`}/>
           <div className="video__cta">
             {likedVideos.find((video) => video._id === singleVideo._id) ? (
               <div
