@@ -43,6 +43,9 @@
     .sidebar__menus{
         height: calc(100vh - 5.4rem);
     }
+    .empty__video-container{
+        transform: translate(-50%, -100%) !important;
+    }
 }
 
 @media only screen and (max-width : 400px){
