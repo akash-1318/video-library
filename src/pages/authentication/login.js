@@ -21,19 +21,27 @@ function Login() {
   const from  = location.state?.from?.pathname || "/videolisting"
 
   const loginHandler = async ({ email, password }) => {
-    try {
-      const {
-        data: { encodedToken },
-      } = await axios.post("/api/auth/login", {
-        email: email,
-        password: password,
-      });
-      localStorage.setItem("TOKEN", encodedToken);
-      setAuthCred({ ...authCred, authToken: encodedToken, authStatus: true });
-      navigate(from, {replace : true})
-      toast.success("You have logged in");
-    } catch (err) {
-      console.log(err);
+    if(email !== "" && password !== ""){
+      try {
+        const {
+          data: { encodedToken },
+        } = await axios.post("/api/auth/login", {
+          email: email,
+          password: password,
+        });
+        localStorage.setItem("TOKEN", encodedToken);
+        setAuthCred({ ...authCred, authToken: encodedToken, authStatus: true });
+        navigate(from, {replace : true})
+        toast.success("You have logged in");
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      if(email === "" || password === ""){
+        toast.error("Every field require")
+      } else{
+        toast.error("Something went wrong")
+      }
     }
   };
 
@@ -81,13 +89,6 @@ function Login() {
                     onClick={() => setPasswordType(!passwordType)}
                   ></i>
                 )}
-              </div>
-              <div className="cred__remember-forgot">
-                <div className="remember__checkbox">
-                  <input type="checkbox" />
-                  <label>Remember me</label>
-                </div>
-                <div className="forgot__password">Forgot your password?</div>
               </div>
               <button type="submit" className="btn solid__primary cred__button">
                 Login
