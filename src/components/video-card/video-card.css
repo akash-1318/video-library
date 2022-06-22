@@ -3,13 +3,14 @@
     gap: 3rem;
 }
 
-.card{
+.video__card-conatiner > .card{
     cursor: initial;
     border-radius: 0px;
     box-shadow: none;
     align-self: flex-start;
     background-color: var(--white-color);
     position: relative;
+    width: 100%;
 }
 
 .card.dark{

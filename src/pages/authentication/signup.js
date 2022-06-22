@@ -29,12 +29,14 @@ function Signup() {
     lastname,
     email,
     password,
+    confirmPassword
   }) => {
     if (
       firstname !== "" &&
       lastname !== "" &&
       email !== "" &&
-      password !== ""
+      password !== "" &&
+      password === confirmPassword
     ) {
       try {
         const {
@@ -53,6 +55,12 @@ function Signup() {
       } catch (err) {
         toast.error("Error in signup");
         console.log(err);
+      }
+    } else{
+      if(firstname === "" || lastname === "" || email === "" || password === "" || confirmPassword === ""){
+        toast.error("Every field require")
+      } else{
+        toast.error("Something went wrong")
       }
     }
   };
@@ -128,7 +136,7 @@ function Signup() {
                   placeholder="confirm password"
                   type={confPasswordType ? "password" : "text"}
                   className={`${
-                    signupCred.password !== signupCred.confirmPassword
+                    signupCred.password !== signupCred.confirmPassword && signupCred.confirmPassword !== ""
                       ? "wrong__input"
                       : ""
                   }`}
@@ -150,12 +158,6 @@ function Signup() {
                     onClick={() => setConfPasswordType(!confPasswordType)}
                   ></i>
                 )}
-              </div>
-              <div className="cred__remember-forgot">
-                <div className="remember__checkbox">
-                  <input type="checkbox" />
-                  <label>Accept all terms & conditions</label>
-                </div>
               </div>
               <button type="submit" className="btn solid__primary cred__button">
                 Signup
