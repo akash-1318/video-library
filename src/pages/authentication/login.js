@@ -97,8 +97,8 @@ function Login() {
                 className="btn solid__primary cred__button"
                 onClick={(e) => {
                   loginHandler({
-                    email: "adarshbalika@gmail.com",
-                    password: "adarshBalika123",
+                    email: "akashsharma@gmail.com",
+                    password: "akashsharma123",
                   })
                   navigate(from, {replace : true})
                 }}
