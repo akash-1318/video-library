@@ -16,7 +16,7 @@ import {
 } from "../../utils/utils-index";
 import {Modal} from "../compIndex"
 
-function VideoCard({ videoData }) {
+function VideoCard({ videoData, setActiveState, activeState }) {
   const navigate = useNavigate();
   const {theme} = useThemeContext();
   const location = useLocation();
@@ -24,7 +24,7 @@ function VideoCard({ videoData }) {
   const { authCred } = useAuthContext();
   const { state, dispatch } = useVideoContext();
   const { authToken, authStatus } = authCred;
-  const { likedVideos, watchLater, history } = state;
+  const { likedVideos, watchLater, videosData } = state;
   const { modal, setModal } = usePrimaryStatesContext();
 
   const openVideoPage = (e) => {
@@ -65,11 +65,19 @@ function VideoCard({ videoData }) {
             </div>
             <span
               className="menu__icon"
-              onClick={(e) => setShowMenu(!showMenu)}
+              onClick={() => {
+                if(activeState === videoData._id){
+                  setShowMenu(false)
+                  setActiveState(null)
+                } else{
+                  setActiveState(videoData._id)
+                  setShowMenu(true)
+                }
+              }}
             >
               <i class="bx bx-dots-vertical-rounded"></i>
             </span>
-            {showMenu === true ? (
+            {showMenu === true && activeState === videoData._id ? (
               <div
                 className={`menu__bar-conatiner ${theme === "light" ? "" : "dark"}`}
                 onClick={() => setShowMenu(false)}

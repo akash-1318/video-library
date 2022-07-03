@@ -10,6 +10,7 @@ import {
   deleteVideoFromPlaylist,
   deletePlaylist,
 } from "../../utils/utils-index";
+import {toast} from "react-toastify"
 
 function Modal() {
   const { modal, setModal } = usePrimaryStatesContext();
@@ -106,14 +107,26 @@ function Modal() {
               onChange={(e) => setPlaylist(e)}
               onKeyPress={(e) => {
                 if (e.key == "Enter") {
-                  addPlaylist(playlistName, dispatch, authToken);
+                  if(playlistName !== ""){
+                    addPlaylist(playlistName, dispatch, authToken);
+                    setPlaylistName("")
+                  } else{
+                    toast.error("Add playlist name")
+                  }
                 }
               }}
             />
           </div>
           <button
             class="create__playlist-btn"
-            onClick={() => addPlaylist(playlistName, dispatch, authToken)}
+            onClick={() => {
+              if(playlistName !== ""){
+                addPlaylist(playlistName, dispatch, authToken)
+                setPlaylistName("")
+              } else{
+                toast.error("Add playlist name")
+              }
+            }}
           >
             <i class="bx bx-plus"></i> create
           </button>

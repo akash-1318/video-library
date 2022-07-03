@@ -1,11 +1,12 @@
 import "./navigation.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { usePrimaryStatesContext } from "../../contexts/primary-states-context";
 import {useThemeContext} from "../../contexts/theme-context"
 
 function Navigation() {
   const { sidebar, setSidebar, setSearchInput } = usePrimaryStatesContext();
   const {theme} = useThemeContext();
+  const navigate = useNavigate();
   return (
     <header className={`header__nav ${theme === "light" ? "" : "dark"}`}>
       <div className="header__nav-left">
@@ -26,7 +27,10 @@ function Navigation() {
           <i className="bx bx-search-alt-2"></i>
         </div>
         <input placeholder="search" className="header__search" 
-        onChange = {(e) => setSearchInput(e.target.value)}
+        onChange = {(e) => {
+          setSearchInput(e.target.value)
+        }}
+        onFocus={()=>navigate("/videolisting")}
         />
       </div>
       <div className="header__nav-right">

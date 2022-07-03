@@ -19,7 +19,7 @@ function Playlist() {
         <Sidebar />
         <section className="main__video-container">
           <h1 className="page__text">Playlists</h1>
-          <div className="videos__container playlist">
+          <div className="playlist__container playlist">
             {playlists.length === 0 ? (
               <>
                 <div className="empty__video-container">
