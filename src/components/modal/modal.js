@@ -107,12 +107,13 @@ function Modal() {
               onChange={(e) => setPlaylist(e)}
               onKeyPress={(e) => {
                 if (e.key == "Enter") {
-                  if(playlistName !== ""){
-                    addPlaylist(playlistName, dispatch, authToken);
-                    setPlaylistName("")
-                  } else{
-                    toast.error("Add playlist name")
-                  }
+                  addPlaylist(playlistName, dispatch, authToken)
+                  // if(playlistName !== ""){
+                  //   addPlaylist(playlistName, dispatch, authToken);
+                  //   setPlaylistName("")
+                  // } else{
+                  //   toast.error("Add playlist name")
+                  // }
                 }
               }}
             />
@@ -120,12 +121,13 @@ function Modal() {
           <button
             class="create__playlist-btn"
             onClick={() => {
-              if(playlistName !== ""){
-                addPlaylist(playlistName, dispatch, authToken)
-                setPlaylistName("")
-              } else{
-                toast.error("Add playlist name")
-              }
+              addPlaylist(playlistName, dispatch, authToken)
+              // if(playlistName !== ""){
+              //   addPlaylist(playlistName, dispatch, authToken)
+              //   setPlaylistName("")
+              // } else{
+              //   toast.error("Add playlist name")
+              // }
             }}
           >
             <i class="bx bx-plus"></i> create
