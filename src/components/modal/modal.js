@@ -109,7 +109,7 @@ function Modal() {
                 if (e.key == "Enter") {
                   if(playlistName !== ""){
                     addPlaylist(playlistName, dispatch, authToken);
-                    // setPlaylistName("")
+                    setPlaylistName("")
                   } else{
                     toast.error("Add playlist name")
                   }
@@ -122,7 +122,7 @@ function Modal() {
             onClick={() => {
               if(playlistName !== ""){
                 addPlaylist(playlistName, dispatch, authToken)
-                // setPlaylistName("")
+                setPlaylistName("")
               } else{
                 toast.error("Add playlist name")
               }
