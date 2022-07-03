@@ -52,6 +52,7 @@
 .related__videos-container{
     margin: 4rem 0rem;
     width: 35%;
-    height: 80vh;
+    height: 106vh;
     overflow-y: scroll;
+    padding-right: 3rem;
 }
