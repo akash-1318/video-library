@@ -1,4 +1,5 @@
 import "./history.css";
+import {useState} from "react"
 import { Navigation, Sidebar, VideoCard } from "../../components/compIndex";
 import { useVideoContext } from "../../contexts/video-context";
 import { useAuthContext } from "../../contexts/auth-context";
@@ -6,6 +7,7 @@ import { clearAllHistory } from "../../utils/handle-history";
 import empty from "../../assets/images/Empty-bag.svg";
 
 function History() {
+  const [activeState, setActiveState] = useState(null);
   const { state, dispatch } = useVideoContext();
   const { history } = state;
   const { authCred } = useAuthContext();
@@ -38,7 +40,12 @@ function History() {
             ) : (
               <>
                 {history.map((video) => {
-                  return <VideoCard videoData={video} key={video.id} />;
+                  return <VideoCard 
+                  videoData={video} 
+                  key={video.id} 
+                  activeState = {activeState}
+                  setActiveState = {setActiveState}
+                  />;
                 })}
               </>
             )}

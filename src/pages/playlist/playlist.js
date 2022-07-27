@@ -1,4 +1,5 @@
 import "./playlist.css";
+import {useState} from "react"
 import { Navigation, Sidebar, VideoCard } from "../../components/compIndex";
 import { useVideoContext } from "../../contexts/video-context";
 import { useAuthContext } from "../../contexts/auth-context";
@@ -7,6 +8,7 @@ import { deletePlaylist } from "../../utils/utils-index";
 import empty from "../../assets/images/Empty-bag.svg";
 
 function Playlist() {
+  const [activeState, setActiveState] = useState(null);
   const { state, dispatch } = useVideoContext();
   const { playlists, playlistVideos } = state;
   const { authCred } = useAuthContext();
@@ -48,7 +50,10 @@ function Playlist() {
                       </div>
                       <div className="videos__container playlist">
                         {item.videos.map((playlistVideo) => {
-                          return <VideoCard videoData={playlistVideo} />;
+                          return <VideoCard videoData={playlistVideo} 
+                          activeState = {activeState}
+                          setActiveState = {setActiveState}
+                          />;
                         })}
                       </div>
                     </div>

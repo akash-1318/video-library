@@ -1,9 +1,11 @@
 import "./watch-later.css";
+import {useState} from "react"
 import { Navigation, Sidebar, VideoCard } from "../../components/compIndex";
 import { useVideoContext } from "../../contexts/video-context";
 import empty from "../../assets/images/Empty-bag.svg";
 
 function WatchLater() {
+  const [activeState, setActiveState] = useState(null);
   const { state } = useVideoContext();
   const { watchLater } = state;
   console.log(watchLater);
@@ -25,7 +27,12 @@ function WatchLater() {
             ) : (
               <>
                 {watchLater.map((video) => {
-                  return <VideoCard videoData={video} key={video.id} />;
+                  return <VideoCard 
+                  videoData={video} 
+                  key={video.id} 
+                  activeState = {activeState}
+                  setActiveState = {setActiveState}
+                  />;
                 })}
               </>
             )}

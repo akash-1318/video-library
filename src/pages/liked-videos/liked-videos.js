@@ -1,10 +1,12 @@
 import "./liked-videos.css";
+import {useState} from "react"
 import {Navigation,Sidebar, VideoCard} from "../../components/compIndex"
 import {useVideoContext} from "../../contexts/video-context";
 import empty from "../../assets/images/Empty-bag.svg"
 
 function LikedVideos() {
     const {state} = useVideoContext();
+    const [activeState, setActiveState] = useState(null);
     const {likedVideos} = state;
   return (
     <>
@@ -22,7 +24,12 @@ function LikedVideos() {
               </>) : (<>
                 {likedVideos.map((video) => {
                   return(
-                    <VideoCard videoData={video} key={video.id}/>
+                    <VideoCard 
+                    videoData={video} 
+                    key={video.id}
+                    activeState = {activeState}
+                    setActiveState = {setActiveState}
+                    />
                   )
               })}
               </>)}
