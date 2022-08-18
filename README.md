@@ -29,4 +29,4 @@ This app contains the Mock Backend created for Video Library App. It contains di
 
 Please go through DevTube and kindly give you feedback.
 
-https://beloud.netlify.app/
+https://devtube-13.netlify.app/
